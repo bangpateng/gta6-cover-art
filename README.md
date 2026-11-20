@@ -1,6 +1,8 @@
 # Neon Shore — GTA-style Cover Art Maker
 
-[![make.fun](https://img.shields.io/badge/make.fun-gta6--cover--art--01-ff5e62)](https://make.fun/c/gta6-cover-art-01)
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/bangpateng/gta6-cover-art/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/bangpateng/gta6-cover-art/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 [![Invite](https://img.shields.io/badge/invite-0h2zmzc4-2de2e6)](https://make.fun/r/0h2zmzc4)
 
 Turn your photo and a caption into a multi-panel poster in the style of GTA 6's
