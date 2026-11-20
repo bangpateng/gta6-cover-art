@@ -1,23 +1,38 @@
-// A working gta6-cover-art-01 entry (Node 22, standard library only): the app is this directory's app/ folder, plain
-// static files a desktop browser loads offline (app/index.html and its ES modules, no library and no network
-// request), and the program hands it in. It copies app/ and screenshots/ from beside this file to /output and writes
-// /output/dossier.json, the summary the judge reads, with the vendored make.fun library. Only the plumbing, not the
-// cover art the bounty asks for: Cover Snap, a plain one-photo square cover with a sunset tint and a bold caption,
-// exported as a 1080 x 1080 PNG. Its two sample photos (app/samples/) were made for make.fun with an image model and
-// are free to use. Build your own GTA-style cover maker in its place, put your 3 or 4 PNG or JPEG screenshots in
-// screenshots/ (the first by name is the cover) and run it.
+// Neon Shore, a gta6-cover-art-01 entry (Node 22, standard library only): the
+// app is this directory's app/ folder, plain static files a desktop browser
+// loads offline (app/index.html and its ES modules, the Anton and Pacifico
+// fonts vendored under app/fonts/, no library and no network request), and the
+// program hands it in. It copies app/ and screenshots/ from beside this file
+// to /output and writes /output/dossier.json, the summary the judge reads,
+// with the vendored make.fun library. Before writing anything it checks the
+// entry's own shape — app/index.html present, 3 or 4 screenshots — so a
+// half-built tree fails loudly here instead of at the gate.
 //
 // Serve it locally with `node serve.ts`, then open http://localhost:8080.
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-app.ts';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+
+// My own pre-flight: refuse to hand in a tree that is missing its entry point
+// or its screenshots, with the reason on stderr instead of a silent bad entry.
+const indexPath = join(here, 'app', 'index.html');
+if (!existsSync(indexPath) || !statSync(indexPath).isFile()) {
+  throw new Error('app/index.html is missing: the app cannot be handed in');
+}
+const shotsDir = join(here, 'screenshots');
+const shots = existsSync(shotsDir)
+  ? readdirSync(shotsDir).filter((name) => !name.startsWith('.'))
+  : [];
+if (shots.length < 3 || shots.length > 4) {
+  throw new Error(`screenshots/ holds ${shots.length} images, expected 3 or 4`);
+}
 
 mkdirSync(out, { recursive: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
@@ -38,3 +53,5 @@ writeFileSync(
     app_path_max_bytes: 1000,
   }),
 );
+
+console.log(`Neon Shore handed in: ${shots.length} screenshots (${shots.sort().join(', ')})`);

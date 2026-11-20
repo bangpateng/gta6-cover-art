@@ -1,0 +1,73 @@
+// Colour grades for Neon Shore. Each grade is a sunset-and-neon palette of
+// my own: a sky gradient, an overlay wash, a warm tint, the sun's colours and
+// the accent used for the subtitle and the badge. No grade copies any game's
+// look; they are sunset and neon palettes built from scratch.
+export const GRADES = {
+  sunset: {
+    name: 'Vice Sunset',
+    skyTop: '#2b1055',
+    skyMid: '#ff5e62',
+    skyBottom: '#ff9966',
+    overlay: ['rgba(255, 94, 98, 0.28)', 'rgba(120, 40, 160, 0.30)'],
+    tint: 'rgba(255, 140, 66, 0.10)',
+    sunCore: '#ffe259',
+    sunRim: '#ff7e5f',
+    accent: '#ffd166',
+    subtitle: '#ff8fb3',
+    ink: '#1c0b2e',
+  },
+  neon: {
+    name: 'Neon Night',
+    skyTop: '#0f0524',
+    skyMid: '#c724b1',
+    skyBottom: '#2de2e6',
+    overlay: ['rgba(199, 36, 177, 0.30)', 'rgba(45, 226, 230, 0.22)'],
+    tint: 'rgba(45, 226, 230, 0.08)',
+    sunCore: '#f9f871',
+    sunRim: '#ff2e88',
+    accent: '#2de2e6',
+    subtitle: '#ff5da2',
+    ink: '#0d0221',
+  },
+  golden: {
+    name: 'Golden Hour',
+    skyTop: '#3d1e4d',
+    skyMid: '#f7971e',
+    skyBottom: '#ffd200',
+    overlay: ['rgba(247, 151, 30, 0.26)', 'rgba(255, 210, 0, 0.12)'],
+    tint: 'rgba(255, 190, 60, 0.12)',
+    sunCore: '#fff3b0',
+    sunRim: '#f7971e',
+    accent: '#ffe259',
+    subtitle: '#ffb703',
+    ink: '#241031',
+  },
+  noir: {
+    name: 'Miami Noir',
+    skyTop: '#0b0b1e',
+    skyMid: '#3a1c5e',
+    skyBottom: '#e94560',
+    overlay: ['rgba(233, 69, 96, 0.24)', 'rgba(20, 20, 50, 0.34)'],
+    tint: 'rgba(233, 69, 96, 0.08)',
+    sunCore: '#ff6b81',
+    sunRim: '#e94560',
+    accent: '#e94560',
+    subtitle: '#ff8fa3',
+    ink: '#0a0a18',
+  },
+  candy: {
+    name: 'Candy Pop',
+    skyTop: '#7209b7',
+    skyMid: '#f72585',
+    skyBottom: '#ffbe0b',
+    overlay: ['rgba(247, 37, 133, 0.26)', 'rgba(114, 9, 183, 0.28)'],
+    tint: 'rgba(255, 190, 11, 0.08)',
+    sunCore: '#ffee6b',
+    sunRim: '#f72585',
+    accent: '#ffbe0b',
+    subtitle: '#ff70a6',
+    ink: '#2d0a4e',
+  },
+};
+
+export const GRADE_IDS = Object.keys(GRADES);

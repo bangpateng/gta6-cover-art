@@ -3,20 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Neon Shore — GTA-style Cover Art Maker</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
+  <section class="controls" aria-label="Cover editor">
+    <h1>Neon Shore</h1>
+    <p class="tagline">Your photo, a caption, a sunset poster. Three steps to a PNG.</p>
+    <ol class="steps">
+      <li><strong>1.</strong> Add photos</li>
+      <li><strong>2.</strong> Pick a layout &amp; grade</li>
+      <li><strong>3.</strong> Export a PNG</li>
+    </ol>
+
+    <h2>Photos</h2>
+    <div id="photos" class="photos"></div>
+    <div class="row">
+      <button id="sample-photos" type="button">Use sample photos</button>
+      <button id="fill-one" type="button">Fill all with Photo 1</button>
+      <button id="spread-photos" type="button">Spread photos</button>
+    </div>
+    <p class="hint">Photos stay on your machine — nothing is uploaded.</p>
+
+    <h2>Panel</h2>
+    <p class="hint" id="panel-label">Panel 1 — click a panel in the preview to pick it.</p>
+    <label>Photo in this panel
+      <select id="panel-photo"></select>
+    </label>
+    <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1"></label>
+    <label>Position left–right <input id="pan-x" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+    <label>Position up–down <input id="pan-y" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+
+    <h2>Layout</h2>
+    <div id="layouts" class="picks" role="group" aria-label="Cover layout"></div>
+
+    <h2>Colour grade</h2>
+    <div id="grades" class="picks" role="group" aria-label="Colour grade"></div>
+
+    <h2>Caption</h2>
+    <label>Title <input id="title" type="text" maxlength="28" value="Neon Shore"></label>
+    <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="a sunset heist in paradise"></label>
+
+    <h2>Effects</h2>
+    <div class="effects">
+      <label><input id="fx-sun" type="checkbox" checked> Sun &amp; palms</label>
+      <label><input id="fx-grain" type="checkbox" checked> Film grain</label>
+      <label><input id="fx-vignette" type="checkbox" checked> Vignette</label>
+      <label><input id="fx-badge" type="checkbox" checked> Badge ribbon</label>
+    </div>
+
+    <h2>Post size</h2>
+    <div id="sizes" class="sizes"></div>
+    <button id="export" type="button" class="primary">Export PNG 1080 x 1080</button>
+    <button id="export-all" type="button">Export all 3 sizes</button>
     <p id="status" role="status"></p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="900" height="900" aria-label="Live preview of the cover"></canvas>
+    <p class="hint">Live preview — click any panel to crop and position it.</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
